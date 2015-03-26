@@ -27,6 +27,9 @@ Toy Project to Parse NCAA Group and Create Scenarios
    `brackets_html/012345.json` where `012345` is a stand-in for the entry
    ID (which is unique for each year).
 
+   The correctness of this parser can be checked by running
+   `python check_parse_brackets.py --entry-id=012345`.
+
 ## Install Instructions
 
 pip install --upgrade selenium
