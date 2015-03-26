@@ -3,4 +3,7 @@
 *.html
 *.json
 links_html/
-local_settings.py  # Has private data
+brackets_html/
+
+# This file has data that should not be checked in.
+local_settings.py
