@@ -1,3 +1,4 @@
+import pickle
 import string
 
 
@@ -7,13 +8,24 @@ BASE64_ALPHABET_DICT = {str(i + 1): letter
                         for i, letter in enumerate(_BASE64_ALPHABET)}
 BASE64_ALPHABET_REVERSE = {letter: i
                            for i, letter in BASE64_ALPHABET_DICT.iteritems()}
-KEY_SET = set(map(str, range(127)))
+KEY_SET = frozenset(map(str, range(127)))
 
 
 class GameSlots(object):
 
     def __init__(self, mapping=None):
         self.data = {} if mapping is None else mapping
+
+    def save(self):
+        all_keys = sorted(map(int, self.data.keys()))
+        if min(all_keys) != 0:
+            raise ValueError('Cannot save unless we start with 0.')
+        if range(max(all_keys) + 1) != all_keys:
+            raise ValueError('Can only save brackets with contiguous '
+                             'games complete')
+        filename = 'complete_bracket_thru_%s.pkl' % (max(all_keys),)
+        with open(filename, 'w') as fh:
+            pickle.dump(self, fh)
 
     def copy(game_slots):
         return GameSlots(game_slots.data.copy())
