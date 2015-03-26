@@ -11,87 +11,90 @@ KEY_SET = set(map(str, range(127)))
 
 
 class GameSlots(object):
-  def __init__(self, mapping=None):
-    self.data = {} if mapping is None else mapping
 
-  def copy(game_slots):
-    return GameSlots(game_slots.data.copy())
+    def __init__(self, mapping=None):
+        self.data = {} if mapping is None else mapping
 
-  def add_slot(self, slot_id, obj):
-    slot_id = str(int(slot_id))
-    if slot_id in self.data:
-      raise Exception('%s already claimed' % slot_id)
+    def copy(game_slots):
+        return GameSlots(game_slots.data.copy())
 
-    self.data[slot_id] = obj
+    def add_slot(self, slot_id, obj):
+        slot_id = str(int(slot_id))
+        if slot_id in self.data:
+            raise Exception('%s already claimed' % slot_id)
 
-  def get_slot(self, slot_id):
-    slot_id = str(int(slot_id))
-    return self.data[slot_id]
+        self.data[slot_id] = obj
 
-  def reset_slot(self, slot_id, obj):
-    slot_id = str(int(slot_id))
-    if slot_id not in self.data:
-      raise Exception('%s hasn\'t been claimed yet' % slot_id)
+    def get_slot(self, slot_id):
+        slot_id = str(int(slot_id))
+        return self.data[slot_id]
 
-    self.data[slot_id] = obj
+    def reset_slot(self, slot_id, obj):
+        slot_id = str(int(slot_id))
+        if slot_id not in self.data:
+            raise Exception('%s hasn\'t been claimed yet' % slot_id)
 
-  @property
-  def complete(self):
-    assert set(self.data.keys()) == KEY_SET
-    for value in self.data.itervalues():
-      if not isinstance(value, Team):
-        return False
-    return True
+        self.data[slot_id] = obj
 
-  @property
-  def reduced(self):
-    if not self.complete:
-      return super(Team, self).__hash__()
-    else:
-      # Since complete, we know keys == KEY_SET
-      result_list = []
-      for i in range(127):
-        team = self.data[str(i)]
-        result_list.append(BASE64_ALPHABET_DICT[team.team_id])
-      return ''.join(result_list)
+    @property
+    def complete(self):
+        assert set(self.data.keys()) == KEY_SET
+        for value in self.data.itervalues():
+            if not isinstance(value, Team):
+                return False
+        return True
 
-  @classmethod
-  def from_reduced(cls, reduced):
-    mapping = {}
-    assert len(reduced) == 127
-    for i in range(127):
-      mapping[str(i)] = Team(BASE64_ALPHABET_REVERSE[reduced[i]])
-    return cls(mapping=mapping)
+    @property
+    def reduced(self):
+      if not self.complete:
+          return super(Team, self).__hash__()
+      else:
+          # Since complete, we know keys == KEY_SET
+          result_list = []
+          for i in range(127):
+              team = self.data[str(i)]
+              result_list.append(BASE64_ALPHABET_DICT[team.team_id])
+          return ''.join(result_list)
 
-  def __eq__(self, other):
-    if not isinstance(other, GameSlots):
-      return False
-    if not (self.complete and other.complete):
-      return False
-    return self.reduced == other.reduced
+    @classmethod
+    def from_reduced(cls, reduced):
+        mapping = {}
+        assert len(reduced) == 127
+        for i in range(127):
+            mapping[str(i)] = Team(BASE64_ALPHABET_REVERSE[reduced[i]])
+        return cls(mapping=mapping)
 
-  def __repr__(self):
-    return 'GameSlots(slots=%s)' % self.data.keys()
+    def __eq__(self, other):
+        if not isinstance(other, GameSlots):
+            return False
+        if not (self.complete and other.complete):
+            return False
+        return self.reduced == other.reduced
+
+    def __repr__(self):
+        return 'GameSlots(slots=%s)' % self.data.keys()
 
 
 class Team(object):
-  def __init__(self, team_id):
-    # Make sure it is an integer
-    self.team_id = str(int(team_id))
 
-  def __eq__(self, other):
-    if not isinstance(other, Team):
-      return False
-    return self.team_id == other.team_id
+    def __init__(self, team_id):
+        # Make sure it is an integer
+        self.team_id = str(int(team_id))
 
-  def __repr__(self):
-    return 'Team(%s)' % self.team_id
+    def __eq__(self, other):
+        if not isinstance(other, Team):
+            return False
+        return self.team_id == other.team_id
+
+    def __repr__(self):
+        return 'Team(%s)' % self.team_id
 
 
 class WinnerOf(object):
-  def __init__(self, game_slot1, game_slot2):
-    self.game_slot1 = game_slot1
-    self.game_slot2 = game_slot2
 
-  def __repr__(self):
-    return 'WinnerOf(slot=%s, slot=%s)' % (self.game_slot1, self.game_slot2)
+    def __init__(self, game_slot1, game_slot2):
+        self.game_slot1 = game_slot1
+        self.game_slot2 = game_slot2
+
+    def __repr__(self):
+        return 'WinnerOf(slot=%s, slot=%s)' % (self.game_slot1, self.game_slot2)
