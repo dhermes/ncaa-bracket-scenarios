@@ -22,6 +22,11 @@ Toy Project to Parse NCAA Group and Create Scenarios
    pool. These will be stored as `brackets_html/012345.html` where `012345`
    is a stand-in for the entry ID (which is unique for each year).
 
+1. Run `parse_brackets_html.py` to parse each bracket's HTML to determine the
+   winners of each game (slots 64 through 126). These will be stored as
+   `brackets_html/012345.json` where `012345` is a stand-in for the entry
+   ID (which is unique for each year).
+
 ## Install Instructions
 
 pip install --upgrade selenium

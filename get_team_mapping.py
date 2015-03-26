@@ -24,7 +24,9 @@ def get_team_info(data_tag):
     """Returns ({teamID}, {team name}) from a node."""
     name_span, = data_tag.findAll('span', {'class': 'name'})
     team_name = name_span.text
-    team_id = int(data_tag['data-slotindex'])
+    slot_id = int(data_tag['data-slotindex'])
+    # NOTE: Assumes the team ID is 1 more than the slot ID.
+    team_id = slot_id + 1
     return team_id, team_name
 
 
