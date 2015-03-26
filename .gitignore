@@ -1,2 +1,6 @@
+*pyc
+
 *.html
 *.json
+links_html/
+local_settings.py  # Has private data
