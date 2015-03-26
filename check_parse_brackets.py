@@ -7,6 +7,7 @@ with open('team_map.json', 'r') as fh:
     TEAM_MAP = json.load(fh)
 # Convert string keys to integers.
 TEAM_MAP = {int(key): val for key, val in TEAM_MAP.items()}
+ROUND_BREAKS = frozenset([64, 96, 112, 120, 124, 126, 127])
 
 
 def main():
@@ -21,6 +22,8 @@ def main():
     winners = {int(key): val for key, val in winners.items()}
 
     for game_id in sorted(winners.keys()):
+        if game_id in ROUND_BREAKS:
+            print '=' * 60
         winner_of = winners[game_id]
         winner_name = TEAM_MAP[winner_of]
         print '%3d -> %s' % (game_id, winner_name)
