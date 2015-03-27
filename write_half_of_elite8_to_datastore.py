@@ -7,7 +7,7 @@ def main():
         pickle_contents = fh.read()
 
     key = datastore.Key('BracketContainer', 'half-elite8')
-    entity = datastore.Entity(key)
+    entity = datastore.Entity(key, exclude_from_indexes=('bracket',))
     entity['bracket'] = pickle_contents
     datastore.put([entity])
 
