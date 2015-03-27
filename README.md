@@ -44,6 +44,10 @@ Toy Project to Parse NCAA Group and Create Scenarios
    2, then 1. In total, there are 11 left, with 2**11 = 2048 possible
    outcomes left.
 
+1. Run `run_all_scenarios.py` to compute all possible remaining outcomes
+   (should be 2048). Creates the outcomes serialized as
+   `reduced_completed_scenarios.json`.
+
 ## Install Instructions
 
 ```
