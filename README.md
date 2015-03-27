@@ -48,6 +48,10 @@ Toy Project to Parse NCAA Group and Create Scenarios
    (should be 2048). Creates the outcomes serialized as
    `reduced_completed_scenarios.json`.
 
+1. Run `entries_as_reduced.py` to store all the entries in the bracket pool
+   in reduced form (same serialization as in previous step). This will
+   create `reduced_all_filled_out.json`.
+
 ## Install Instructions
 
 ```
