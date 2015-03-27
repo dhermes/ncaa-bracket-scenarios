@@ -35,12 +35,6 @@ class MainPage(BaseHandler):
         self.render_response('main.templ')
 
 
-class AdminPage(BaseHandler):
-
-    def get(self):
-        self.render_response('admin.templ')
-
-
 class ShowUserData(BaseHandler):
 
     def get(self, key):
@@ -59,7 +53,6 @@ class RedirectHandler(webapp2.RequestHandler):
 
 
 routes = [
-    ('/admin', AdminPage),
     (USER_PATHS_ROUTE, ShowUserData),
     ('/', MainPage),
     ('/.*', RedirectHandler),

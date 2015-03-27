@@ -15,8 +15,8 @@ handlers:
   static_files: bootstrap-responsive.css
   upload: bootstrap-responsive\.css
 
-- url: /(admin|select-*)
-  script: main.app
+- url: /(admin|select-elite-8|select-last-7|select-last-6|select-last-5|select-last-4)
+  script: admin.app
   login: admin
 
 - url: /.*
