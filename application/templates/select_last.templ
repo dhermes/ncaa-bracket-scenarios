@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meddin March Madness 2014</title>
+    <link href="/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.css" rel="stylesheet">
+  </head>
+  <body>
+
+    {% if incorrect_url %}
+    <p>Bad URL Dude</p>
+    {% else %}
+      {% if finished %}
+      <p>{{ message }}</p>
+      {% else %}
+        {% if not_possible %}
+        <p>{{ message }}</p>
+        {% else %}
+        <form action="/select-last-{{ how_many }}" method="post">
+          {% for slot, t1_id, t1_name, t2_id, t2_name in matchups %}
+          <select name="{{ slot }}">
+            <option value="null">null</option>
+            <option value="{{ t1_id }}">{{ t1_name }}</option>
+            <option value="{{ t2_id }}">{{ t2_name }}</option>
+          </select>
+          <br>
+          {% endfor %}
+          <input type="submit">
+        </form>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+  </body>
+</html>

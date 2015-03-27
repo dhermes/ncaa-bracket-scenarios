@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meddin March Madness 2014</title>
+    <link href="/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.css" rel="stylesheet">
+  </head>
+  <body>
+
+  {% if still_pending %}
+  <p>Pick the winners from the sweet 16</p>
+  <form action="/select-elite-8" method="post">
+    {% for slot, t1_id, t1_name, t2_id, t2_name in matchups %}
+    <select name="{{ slot }}">
+      <option value="{{ t1_id }}">{{ t1_name }}</option>
+      <option value="{{ t2_id }}">{{ t2_name }}</option>
+    </select>
+    <br>
+    {% endfor %}
+    <input type="submit">
+  </form>
+  {% else %}
+    Elite 8 all set
+  {% endif %}
+
+  </body>
+</html>

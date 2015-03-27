@@ -1,0 +1,31 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /bootstrap\.css
+  static_files: bootstrap.css
+  upload: bootstrap\.css
+
+- url: /bootstrap-responsive\.css
+  static_files: bootstrap-responsive.css
+  upload: bootstrap-responsive\.css
+
+- url: /(admin|select-*)
+  script: main.app
+  login: admin
+
+- url: /.*
+  script: main.app
+
+builtins:
+- remote_api: on  # IMPORT ALL ENTITIES USING THE REMOTE API
+- deferred: on
+
+libraries:
+- name: jinja2
+  version: latest
