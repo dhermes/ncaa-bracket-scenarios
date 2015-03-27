@@ -46,4 +46,6 @@ Toy Project to Parse NCAA Group and Create Scenarios
 
 ## Install Instructions
 
+```
 pip install --upgrade selenium
+```
