@@ -5,6 +5,7 @@
 links_html/
 brackets_html/
 complete_bracket_sweet_16.pkl
+complete_bracket_first_half_of_elite_8.pkl
 
 # This file has data that should not be checked in.
 local_settings.py

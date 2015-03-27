@@ -15,7 +15,10 @@ def choose_winner(winner_of, game_slots):
 
     message = '%s [y] or %s [n]? ' % (team_name1, team_name2)
     choice = raw_input(message)
-    if choice.strip().lower() == 'y':
+    response = choice.strip().lower()
+    if response == '':
+        return
+    elif response == 'y':
         return prev_team1
     else:
         return prev_team2
@@ -23,15 +26,21 @@ def choose_winner(winner_of, game_slots):
 
 
 def main():
-    with open('base_bracket.pkl', 'r') as fh:
+    with open('complete_bracket_sweet_16.pkl', 'r') as fh:
         slots_before = pickle.load(fh)
 
     game_slots = slots_before.copy()
-    for slot_id in xrange(64, 64 + 32 + 16):
+    winners_added = 0
+    for slot_id in xrange(64 + 32 + 16, 64 + 32 + 16 + 8):
         winner_of = game_slots.get_slot(slot_id)
         winning_team = choose_winner(winner_of, game_slots)
-        game_slots.reset_slot(slot_id, winning_team)
-    game_slots.save('complete_bracket_sweet_16.pkl')
+        if winning_team is not None:
+            winners_added += 1
+            game_slots.reset_slot(slot_id, winning_team)
+    if winners_added != 4:
+        raise ValueError('Expected to add 4 winners after the first'
+                         'half of the Elite 8.')
+    game_slots.save('complete_bracket_first_half_of_elite_8.pkl')
 
 
 if __name__ == '__main__':

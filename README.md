@@ -38,6 +38,12 @@ Toy Project to Parse NCAA Group and Create Scenarios
 1. Run `update_national_bracket.py` to enter winners through the Sweet 16.
    This will create `complete_bracket_sweet_16.pkl`.
 
+1. Run `first_half_of_elite_8.py` to enter winners from the first day of
+   the Elite 8. This creates `complete_bracket_first_half_of_elite_8.pkl`.
+   Note this leaves 4 games left in the Sweet 16, then 4 in Elite 8, then
+   2, then 1. In total, there are 11 left, with 2**11 = 2048 possible
+   outcomes left.
+
 ## Install Instructions
 
 pip install --upgrade selenium
