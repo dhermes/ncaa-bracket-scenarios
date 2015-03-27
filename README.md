@@ -31,8 +31,9 @@ Toy Project to Parse NCAA Group and Create Scenarios
    `python check_parse_brackets.py --entry-id=012345`.
 
 1. Run `create_pickled_national_bracket.py` to create a bare bracket before
-   any results have been recorded. This will create
-   `complete_bracket_thru_63.pkl`.
+   any results have been recorded. This will create `base_bracket.pkl`.
+   (This file does not depend on the teams in the field, so this step
+    can be skipped, as the file will be checked in to the repository.)
 
 ## Install Instructions
 

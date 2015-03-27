@@ -16,14 +16,7 @@ class GameSlots(object):
     def __init__(self, mapping=None):
         self.data = {} if mapping is None else mapping
 
-    def save(self):
-        all_keys = sorted(map(int, self.data.keys()))
-        if min(all_keys) != 0:
-            raise ValueError('Cannot save unless we start with 0.')
-        if range(max(all_keys) + 1) != all_keys:
-            raise ValueError('Can only save brackets with contiguous '
-                             'games complete')
-        filename = 'complete_bracket_thru_%s.pkl' % (max(all_keys),)
+    def save(self, filename):
         with open(filename, 'w') as fh:
             pickle.dump(self, fh)
 
