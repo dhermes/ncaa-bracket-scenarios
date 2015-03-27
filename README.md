@@ -52,6 +52,10 @@ Toy Project to Parse NCAA Group and Create Scenarios
    in reduced form (same serialization as in previous step). This will
    create `reduced_all_filled_out.json`.
 
+1. Run `compute_all_winners.py` to actually compute the top scores and lowest
+   scores for each possible scenario. This creates the file
+   `winning_scores.json`.
+
 ## Install Instructions
 
 ```
