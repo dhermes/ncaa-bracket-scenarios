@@ -56,8 +56,12 @@ Toy Project to Parse NCAA Group and Create Scenarios
    scores for each possible scenario. This creates the file
    `winning_scores.json`.
 
+1. Run `write_winners_to_datastore.py`. This will write all the possible
+   outcomes to the datastore. Requires setting a service account `KEY_NAME`
+   and the string `DATASET_ID` in the file `local_settings.py`.
+
 ## Install Instructions
 
 ```
-pip install --upgrade selenium
+pip install --upgrade selenium gcloud requests BeautifulSoup
 ```
