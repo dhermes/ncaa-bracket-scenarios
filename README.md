@@ -35,6 +35,9 @@ Toy Project to Parse NCAA Group and Create Scenarios
    (This file does not depend on the teams in the field, so this step
     can be skipped, as the file will be checked in to the repository.)
 
+1. Run `update_national_bracket.py` to enter winners through the Sweet 16.
+   This will create `complete_bracket_sweet_16.pkl`.
+
 ## Install Instructions
 
 pip install --upgrade selenium

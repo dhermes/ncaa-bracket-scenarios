@@ -4,7 +4,7 @@
 *.json
 links_html/
 brackets_html/
-complete_bracket_thru_*.pkl
+complete_bracket_sweet_16.pkl
 
 # This file has data that should not be checked in.
 local_settings.py
