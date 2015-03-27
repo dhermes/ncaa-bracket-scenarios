@@ -60,9 +60,18 @@ Toy Project to Parse NCAA Group and Create Scenarios
    outcomes to the datastore. Requires setting a service account `KEY_NAME`
    and the string `DATASET_ID` in the file `local_settings.py`.
 
-1. Run `write_half_of_elite8_to_datastore.py`. This will write the bracket
-   to the datastore after half the games in the Sweet 16 are complete.
-   (Relies on `first_half_of_elite_8.py` having been run.)
+1. Run `write_sweet16_to_datastore.py`. This will write the bracket
+   to the datastore using `complete_bracket_sweet_16.pkl`. This is then used
+   in the GUI to select the Elite 8. (Note we already know half the teams in
+   the Elite 8, this allowed us to only have to compute 2048 outcomes.
+   However, it is easiest to use the existing admin UI to select Elite 8 from
+   the Sweet 16 games.)
+
+## Deploy Instructions
+
+```
+$ appcfg.py update -A ${APP_ID} -V ${VERSION} path/to/application
+```
 
 ## Install Instructions
 
