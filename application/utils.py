@@ -103,5 +103,8 @@ def get_scenario(unfinished_master_game_slots, potential_finished_slots):
     reduced = potential_finished_slots.reduced
     all_data = PotentialBracket.get_by_id(reduced)
     winners = zip(all_data.highest_names, all_data.highest_scores)
+    # Pretty print actually expects the winners to be in the reverse
+    # order they are stored.
+    winners = reversed(winners)
     last_place = zip(all_data.lowest_names, all_data.lowest_scores)
     return pretty_print(assumptions, winners, last_place)
