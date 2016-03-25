@@ -31,6 +31,8 @@ def download_bracket(entry_id):
 
     uri = '%s%d' % (BASE_URI, entry_id)
     response = requests.get(uri)
+    if response.status_code != 200:
+        raise ValueError('Failed', response, entry_id)
     with open(filename, 'w') as fh:
         print 'Writing', filename
         fh.write(response.content)
