@@ -4,7 +4,7 @@ import requests
 
 
 BASE_URI = ('http://games.espn.go.com/tournament-challenge-bracket/'
-            '2015/en/entry?entryID=')
+            '2016/en/entry?entryID=')
 BRACKETS_DIR = 'brackets_html'
 
 
