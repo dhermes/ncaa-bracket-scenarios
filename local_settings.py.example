@@ -1,3 +1,2 @@
 GROUP_ID = 0
-KEY_NAME = 'path/to/service-account-key.json'
 DATASET_ID = 'some-dataset-id'
