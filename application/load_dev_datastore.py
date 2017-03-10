@@ -5,6 +5,7 @@ from google.appengine.ext import ndb
 
 
 class PotentialBracket(ndb.Model):
+    year = ndb.IntegerProperty(required=True, indexed=False)
     highest_names = ndb.StringProperty(repeated=True, indexed=False)
     highest_scores = ndb.IntegerProperty(repeated=True, indexed=False)
     lowest_names = ndb.StringProperty(repeated=True, indexed=False)
@@ -49,6 +50,7 @@ def store_entities():
 
 def store_sweet16():
     class BracketContainer(ndb.Model):
+        year = ndb.IntegerProperty(required=True, indexed=False)
         bracket = ndb.PickleProperty()
 
     with open('complete_bracket_sweet_16.pkl', 'r') as fh:

@@ -15,6 +15,7 @@ BOTTOM_BAR = ('=' * 30) + '\n\n'
 
 
 class PotentialBracket(ndb.Model):
+    year = ndb.IntegerProperty(required=True, indexed=False)
     highest_names = ndb.StringProperty(repeated=True, indexed=False)
     highest_scores = ndb.IntegerProperty(repeated=True, indexed=False)
     lowest_names = ndb.StringProperty(repeated=True, indexed=False)
