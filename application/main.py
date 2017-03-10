@@ -21,7 +21,7 @@ USER_PATHS_ROUTE = '/(%s)' % (USER_PATHS,)
 
 
 class BracketContainer(ndb.Model):
-    year = ndb.IntegerProperty(required=True, indexed=False)
+    year = ndb.IntegerProperty(default=2017, indexed=False)
     bracket = ndb.PickleProperty()
     scenarios = ndb.StringProperty(indexed=False)
 
