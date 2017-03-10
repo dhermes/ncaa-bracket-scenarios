@@ -59,7 +59,7 @@ Toy Project to Parse NCAA Group and Create Scenarios
 1. Run `write_winners_to_datastore.py`. This will write all the possible
    outcomes to the datastore. Requires setting the string `DATASET_ID` in
    the file `local_settings.py` (and making sure auth works with
-   `gcloud-python`).
+   `google-cloud-python`).
 
 1. Run `write_sweet16_to_datastore.py`. This will write the bracket
    to the datastore using `complete_bracket_sweet_16.pkl`. This is then used

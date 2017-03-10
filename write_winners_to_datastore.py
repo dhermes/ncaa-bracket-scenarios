@@ -1,6 +1,6 @@
 import json
 
-from gcloud import datastore
+from google.cloud import datastore
 
 from local_settings import DATASET_ID
 
