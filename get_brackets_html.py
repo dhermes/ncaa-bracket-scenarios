@@ -3,8 +3,8 @@ import os
 import requests
 
 
-BASE_URI = ('http://games.espn.go.com/tournament-challenge-bracket/'
-            '2016/en/entry?entryID=')
+BASE_URI = ('http://games.espn.com/tournament-challenge-bracket/'
+            '2017/en/entry?entryID=')
 BRACKETS_DIR = 'brackets_html'
 
 

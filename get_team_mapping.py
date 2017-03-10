@@ -5,8 +5,8 @@ import os
 import requests
 
 
-NATIONAL_BRACKET = ('http://games.espn.go.com/tournament-challenge-bracket/'
-                    '2016/en/entry?entryID=89213')
+NATIONAL_BRACKET = ('http://games.espn.com/tournament-challenge-bracket/'
+                    '2017/en/entry?entryID=115703')
 FILENAME = base64.b64encode(NATIONAL_BRACKET) + '.html'
 
 

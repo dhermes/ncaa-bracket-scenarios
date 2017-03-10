@@ -8,8 +8,8 @@ from selenium import webdriver
 from local_settings import GROUP_ID
 
 
-BASE_URI = ('http://games.espn.go.com/tournament-challenge-bracket/'
-            '2016/en/group?groupID=')
+BASE_URI = ('http://games.espn.com/tournament-challenge-bracket/'
+            '2017/en/group?groupID=')
 GROUP_URI = '%s%d' % (BASE_URI, GROUP_ID)
 
 LINKS_DIR = 'links_html'
