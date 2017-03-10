@@ -71,11 +71,11 @@ Toy Project to Parse NCAA Group and Create Scenarios
 ## Deploy Instructions
 
 ```
-$ appcfg.py update -A ${APP_ID} -V ${VERSION} path/to/application
+$ gcloud app deploy path/to/application/app.yaml --version ${CURRENT_YEAR}
 ```
 
 ## Install Instructions
 
 ```
-pip install --upgrade selenium gcloud requests BeautifulSoup
+pip install --upgrade selenium google-cloud-datastore requests BeautifulSoup
 ```
