@@ -22,6 +22,7 @@ def to_entity(key, client, outcomes):
 
     ds_key = client.key('PotentialBracket', key)
     entity = datastore.Entity(ds_key)
+    entity['year'] = 2017
     entity['lowest_scores'] = lowest_scores
     entity['lowest_names'] = lowest_names
     entity['highest_scores'] = highest_scores

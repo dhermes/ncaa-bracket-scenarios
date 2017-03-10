@@ -11,6 +11,7 @@ def main():
     key = client.key('BracketContainer', 'sweet16')
     entity = datastore.Entity(key, exclude_from_indexes=('bracket',))
     entity['bracket'] = pickle_contents
+    entity['year'] = 2017
     client.put(entity)
 
 
