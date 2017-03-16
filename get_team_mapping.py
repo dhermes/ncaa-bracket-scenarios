@@ -4,20 +4,27 @@ import json
 import os
 import requests
 
+import local_settings
+
 
 NATIONAL_BRACKET = ('http://games.espn.com/tournament-challenge-bracket/'
                     '2017/en/entry?entryID=115703')
-FILENAME = base64.b64encode(NATIONAL_BRACKET) + '.html'
+HTML_FILENAME = os.path.join(
+    local_settings.YEAR,
+    base64.b64encode(NATIONAL_BRACKET) + '.html')
+JSON_FILENAME = os.path.join(
+    local_settings.YEAR, 'team_map.json')
 SLOT_KEY = 'data-slotindex'
 
 
+
 def get_national_bracket():
-    if not os.path.exists(FILENAME):
+    if not os.path.exists(HTML_FILENAME):
         response = requests.get(NATIONAL_BRACKET)
-        with open(FILENAME, 'w') as fh:
+        with open(HTML_FILENAME, 'w') as fh:
             fh.write(response.content)
         response.close()
-    with open(FILENAME, 'r') as fh:
+    with open(HTML_FILENAME, 'r') as fh:
         return fh.read()
 
 
@@ -32,7 +39,7 @@ def get_team_info(data_tag):
 
 
 def get_data_slot_tags(tag):
-    if tag.name != 'a':
+    if tag.name != 'div':
         return False
     return tag.has_key(SLOT_KEY)
 
@@ -42,6 +49,7 @@ def parse_teams():
     soup = BeautifulSoup(bracket_html)
 
     data_tags = soup.findAll(get_data_slot_tags)
+    assert len(data_tags) == 127
     opening_round_tags = [tag for tag in data_tags
                           if int(tag[SLOT_KEY]) < 64]
     assert len(opening_round_tags) == 64
@@ -49,7 +57,7 @@ def parse_teams():
                  opening_round_tags]
     team_info = dict(set(team_info))
 
-    with open('team_map.json', 'w') as fh:
+    with open(JSON_FILENAME, 'w') as fh:
         json.dump(team_info, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
 

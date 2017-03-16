@@ -1,7 +1,6 @@
 *pyc
 
 *.html
-*.json
 links_html/
 brackets_html/
 complete_bracket_sweet_16.pkl
