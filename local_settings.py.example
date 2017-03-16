@@ -1,3 +1,4 @@
 GROUP_ID = 0
 DATASET_ID = 'some-dataset-id'
 YEAR = '1970'
+NUM_PAGES = 8

@@ -7,20 +7,20 @@ import time
 
 from selenium import webdriver
 
-from local_settings import GROUP_ID
+import local_settings
 import utils
 
 
 BASE_URI = ('http://games.espn.com/tournament-challenge-bracket/'
             '2017/en/group?groupID=')
-GROUP_URI = '%s%d' % (BASE_URI, GROUP_ID)
+GROUP_URI = '{}{:d}'.format(BASE_URI, local_settings.GROUP_ID)
 
-LINKS_DIR = 'links_html'
+LINKS_DIR = os.path.join(local_settings.YEAR, 'links_html')
 BASE_FILENAME = os.path.join(LINKS_DIR, base64.b64encode(GROUP_URI))
 
 
 def _write_content(driver, page_number):
-    filename = '%s-%02d.html' % (BASE_FILENAME, page_number)
+    filename = '{}-{:02d}.html'.format(BASE_FILENAME, page_number)
     with codecs.open(filename, 'w', 'utf-8') as fh:
         msg = 'Writing to {}'.format(filename)
         print(msg)
@@ -44,7 +44,10 @@ def _click_next(driver, page_number):
 
     Returns boolean indicating if another page exists.
     """
-    curr_page = _get_current_page(driver)
+    curr_page = -1
+    while curr_page == -1:
+        curr_page = _get_current_page(driver)
+
     if curr_page != page_number:
         raise ValueError('Expected page number to match.')
 
@@ -56,6 +59,9 @@ def _click_next(driver, page_number):
 
     # Increment before clicking.
     page_number += 1
+    if page_number > local_settings.NUM_PAGES:
+        return False
+
     next_page_links[0].click()
     while _get_current_page(driver) != page_number:
         print('New page has not loaded. Sleeping 0.5 seconds.')

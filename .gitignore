@@ -1,5 +1,6 @@
 *pyc
 
+geckodriver.log
 *.html
 links_html/
 brackets_html/
