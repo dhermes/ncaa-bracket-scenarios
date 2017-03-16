@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import json
 import os
 import requests
@@ -10,10 +12,12 @@ BRACKETS_DIR = 'brackets_html'
 
 def prepare_directory():
     if not os.path.isdir(BRACKETS_DIR):
-        print 'Creating', BRACKETS_DIR
+        msg = 'Creating {}'.format(BRACKETS_DIR)
+        print(msg)
         os.mkdir(BRACKETS_DIR)
     else:
-        print 'Already exists:', BRACKETS_DIR
+        msg = 'Already exists: {}'.format(BRACKETS_DIR)
+        print(msg)
 
 
 def get_bracket_ids():
@@ -26,7 +30,8 @@ def download_bracket(entry_id):
     filename = os.path.join(BRACKETS_DIR,
                             str(entry_id) + '.html')
     if os.path.exists(filename):
-        print 'Exists:', filename
+        msg = 'Exists: {}'.format(filename)
+        print(msg)
         return
 
     uri = '%s%d' % (BASE_URI, entry_id)
@@ -34,7 +39,8 @@ def download_bracket(entry_id):
     if response.status_code != 200:
         raise ValueError('Failed', response, entry_id)
     with open(filename, 'w') as fh:
-        print 'Writing', filename
+        msg = 'Writing {}'.format(filename)
+        print(msg)
         fh.write(response.content)
     response.close()
 

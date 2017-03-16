@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import itertools
 import json
 import pickle
@@ -32,7 +34,8 @@ def main():
             choice_slots.append(slot_id)
             choice_vals.append((value.game_slot1, value.game_slot2))
 
-    print len(choice_slots), 'choices left'
+    msg = '{:d} choices left'.format(len(choice_slots))
+    print(msg)
     reduced_vals = []
     for choice_tuple in itertools.product(*choice_vals):
         reduced_vals.append(
@@ -42,7 +45,8 @@ def main():
     with open(filename, 'w') as fh:
         json.dump(reduced_vals, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
-    print 'Created', filename
+    msg = 'Created {}'.format(filename)
+    print(msg)
 
 
 if __name__ == '__main__':

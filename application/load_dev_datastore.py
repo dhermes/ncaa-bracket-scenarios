@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import json
 import pickle
 
@@ -45,7 +47,8 @@ def store_entities():
                     for i in xrange(base_index, max_index)]
         ndb.put_multi(entities)
         base_index += PAGE_SIZE
-        print 'Completed', base_index
+        msg = 'Completed {}'.format(base_index)
+        print(msg)
 
 
 def store_sweet16():

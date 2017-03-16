@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import argparse
 import json
 
@@ -23,10 +25,11 @@ def main():
 
     for game_id in sorted(winners.keys()):
         if game_id in ROUND_BREAKS:
-            print '=' * 60
+            print('=' * 60)
         winner_of = winners[game_id]
         winner_name = TEAM_MAP[winner_of]
-        print '%3d -> %s' % (game_id, winner_name)
+        msg = '{:3d} -> {}'.format(game_id, winner_name)
+        print(msg)
 
 
 if __name__ == '__main__':

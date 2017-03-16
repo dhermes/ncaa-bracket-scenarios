@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import json
 
 from google.cloud import datastore
@@ -46,7 +48,8 @@ def store_entities():
                     for i in xrange(base_index, max_index)]
         client.put_multi(entities)
         base_index += PAGE_SIZE
-        print 'Completed', base_index
+        msg = 'Completed {}'.format(base_index)
+        print(msg)
 
 
 if __name__ == '__main__':

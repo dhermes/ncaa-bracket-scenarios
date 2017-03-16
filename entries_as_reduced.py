@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import json
 import os
 import pickle
@@ -43,7 +45,8 @@ def main():
     with open(filename, 'w') as fh:
         json.dump(to_store, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
-    print 'Created', filename
+    msg = 'Created {}'.format(filename)
+    print(msg)
 
 
 if __name__ == '__main__':

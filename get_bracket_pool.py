@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import base64
 import codecs
 import os
@@ -18,16 +20,19 @@ BASE_FILENAME = os.path.join(LINKS_DIR, base64.b64encode(GROUP_URI))
 
 def prepare_directory():
     if not os.path.isdir(LINKS_DIR):
-        print 'Creating', LINKS_DIR
+        msg = 'Creating {}'.format(LINKS_DIR)
+        print(msg)
         os.mkdir(LINKS_DIR)
     else:
-        print 'Already exists:', LINKS_DIR
+        msg = 'Already exists: {}'.format(LINKS_DIR)
+        print(msg)
 
 
 def _write_content(driver, page_number):
     filename = '%s-%02d.html' % (BASE_FILENAME, page_number)
     with codecs.open(filename, 'w', 'utf-8') as fh:
-        print 'Writing to', filename
+        msg = 'Writing to {}'.format(filename)
+        print(msg)
         fh.write(driver.page_source)
 
 
@@ -62,7 +67,7 @@ def _click_next(driver, page_number):
     page_number += 1
     next_page_links[0].click()
     while _get_current_page(driver) != page_number:
-        print 'New page has not loaded. Sleeping 0.5 seconds.'
+        print('New page has not loaded. Sleeping 0.5 seconds.')
         time.sleep(0.5)
 
     return True

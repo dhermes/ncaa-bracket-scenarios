@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import json
 import os
 
@@ -103,13 +105,15 @@ def main():
         lowest, highest = get_all_scores(master, brackets)
         to_store[master] = [lowest, highest]
         if count % 25 == 0:
-            print 'Count:', count
+            msg = 'Count: {}'.format(count)
+            print(msg)
 
     filename = 'winning_scores.json'
     with open(filename, 'w') as fh:
         json.dump(to_store, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
-    print 'Created', filename
+    msg = 'Created {}'.format(filename)
+    print(msg)
 
 
 if __name__ == '__main__':

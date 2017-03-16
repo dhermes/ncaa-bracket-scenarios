@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from BeautifulSoup import BeautifulSoup
 import json
 import os
@@ -43,14 +45,16 @@ def main():
         json_filename = os.path.join(get_brackets_html.BRACKETS_DIR,
                                      str(entry_id) + '.json')
         if os.path.exists(json_filename):
-            print 'Exists:', json_filename
+            msg = 'Exists: {}'.format(json_filename)
+            print(msg)
             continue
 
         html_filename = os.path.join(get_brackets_html.BRACKETS_DIR,
                                      str(entry_id) + '.html')
         slot_winners = get_slots(html_filename)
         with open(json_filename, 'w') as fh:
-            print 'Creating', json_filename
+            msg = 'Creating {}'.format(json_filename)
+            print(msg)
             json.dump(slot_winners, fh, indent=2, sort_keys=True,
                       separators=(',', ': '))
 
