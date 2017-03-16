@@ -8,6 +8,7 @@ import time
 from selenium import webdriver
 
 from local_settings import GROUP_ID
+import utils
 
 
 BASE_URI = ('http://games.espn.com/tournament-challenge-bracket/'
@@ -16,16 +17,6 @@ GROUP_URI = '%s%d' % (BASE_URI, GROUP_ID)
 
 LINKS_DIR = 'links_html'
 BASE_FILENAME = os.path.join(LINKS_DIR, base64.b64encode(GROUP_URI))
-
-
-def prepare_directory():
-    if not os.path.isdir(LINKS_DIR):
-        msg = 'Creating {}'.format(LINKS_DIR)
-        print(msg)
-        os.mkdir(LINKS_DIR)
-    else:
-        msg = 'Already exists: {}'.format(LINKS_DIR)
-        print(msg)
 
 
 def _write_content(driver, page_number):
@@ -93,5 +84,5 @@ def get_all_pages():
 
 
 if __name__ == '__main__':
-    prepare_directory()
+    utils.prepare_directory(LINKS_DIR)
     get_all_pages()

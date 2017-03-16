@@ -5,6 +5,7 @@ import os
 import requests
 
 import local_settings
+import utils
 
 
 NATIONAL_BRACKET = ('http://games.espn.com/tournament-challenge-bracket/'
@@ -15,7 +16,6 @@ HTML_FILENAME = os.path.join(
 JSON_FILENAME = os.path.join(
     local_settings.YEAR, 'team_map.json')
 SLOT_KEY = 'data-slotindex'
-
 
 
 def get_national_bracket():
@@ -63,4 +63,5 @@ def parse_teams():
 
 
 if __name__ == '__main__':
+    utils.prepare_directory(local_settings.YEAR)
     parse_teams()

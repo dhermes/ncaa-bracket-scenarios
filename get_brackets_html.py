@@ -4,20 +4,12 @@ import json
 import os
 import requests
 
+import utils
+
 
 BASE_URI = ('http://games.espn.com/tournament-challenge-bracket/'
             '2017/en/entry?entryID=')
 BRACKETS_DIR = 'brackets_html'
-
-
-def prepare_directory():
-    if not os.path.isdir(BRACKETS_DIR):
-        msg = 'Creating {}'.format(BRACKETS_DIR)
-        print(msg)
-        os.mkdir(BRACKETS_DIR)
-    else:
-        msg = 'Already exists: {}'.format(BRACKETS_DIR)
-        print(msg)
 
 
 def get_bracket_ids():
@@ -46,6 +38,6 @@ def download_bracket(entry_id):
 
 
 if __name__ == '__main__':
-    prepare_directory()
+    utils.prepare_directory(BRACKETS_DIR)
     for entry_id in get_bracket_ids():
         download_bracket(entry_id)
