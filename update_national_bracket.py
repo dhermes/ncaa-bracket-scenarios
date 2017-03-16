@@ -1,8 +1,10 @@
 import json
 import pickle
 
+import utils
 
-with open('team_map.json', 'r') as fh:
+
+with open(utils.TEAM_MAP_FILENAME, 'r') as fh:
     TEAM_MAP = json.load(fh)
 
 

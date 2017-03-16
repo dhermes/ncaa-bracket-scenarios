@@ -1,7 +1,8 @@
-from BeautifulSoup import BeautifulSoup
 import base64
 import json
 import os
+
+from BeautifulSoup import BeautifulSoup
 import requests
 
 import local_settings
@@ -13,8 +14,6 @@ NATIONAL_BRACKET = ('http://games.espn.com/tournament-challenge-bracket/'
 HTML_FILENAME = os.path.join(
     local_settings.YEAR,
     base64.b64encode(NATIONAL_BRACKET) + '.html')
-JSON_FILENAME = os.path.join(
-    local_settings.YEAR, 'team_map.json')
 SLOT_KEY = 'data-slotindex'
 
 
@@ -57,7 +56,7 @@ def parse_teams():
                  opening_round_tags]
     team_info = dict(set(team_info))
 
-    with open(JSON_FILENAME, 'w') as fh:
+    with open(utils.TEAM_MAP_FILENAME, 'w') as fh:
         json.dump(team_info, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
 
