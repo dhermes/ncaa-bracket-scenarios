@@ -5,11 +5,7 @@ import json
 from BeautifulSoup import BeautifulSoup
 
 import get_bracket_pool
-import local_settings
-
-
-BRACKET_LINKS_FILE = os.path.join(
-    local_settings.YEAR, 'bracket_links.json')
+import utils
 
 
 def get_links(links, filename):
@@ -46,6 +42,6 @@ def get_all_bracket_links():
 
 if __name__ == '__main__':
     links = get_all_bracket_links()
-    with open(BRACKET_LINKS_FILE, 'w') as fh:
+    with open(utils.BRACKET_LINKS_FILE, 'w') as fh:
         json.dump(links, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))

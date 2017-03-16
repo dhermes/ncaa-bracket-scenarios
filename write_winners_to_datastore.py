@@ -4,12 +4,13 @@ import json
 
 from google.cloud import datastore
 
-from local_settings import DATASET_ID
+import local_settings
+import utils
 
 
 with open('winning_scores.json', 'r') as fh:
     ALL_OUTCOMES = json.load(fh)
-with open('bracket_links.json', 'r') as fh:
+with open(utils.BRACKET_LINKS_FILE, 'r') as fh:
     BRACKETS = json.load(fh)
 ENTRY_TO_NAME = {str(val): key for key, val in BRACKETS.items()}
 PAGE_SIZE = 100
@@ -34,7 +35,7 @@ def to_entity(key, client, outcomes):
 
 
 def store_entities():
-    client = datastore.Client(project=DATASET_ID)
+    client = datastore.Client(project=local_settings.DATASET_ID)
 
     # Page 100 items at a time.
     base_index = 0

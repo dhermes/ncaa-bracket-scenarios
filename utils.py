@@ -1,5 +1,11 @@
 import os
 
+import local_settings
+
+
+BRACKET_LINKS_FILE = os.path.join(
+    local_settings.YEAR, 'bracket_links.json')
+
 
 def prepare_directory(dirname):
     if not os.path.isdir(dirname):

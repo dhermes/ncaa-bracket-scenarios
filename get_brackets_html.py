@@ -4,16 +4,18 @@ import json
 import os
 import requests
 
+import local_settings
 import utils
 
 
 BASE_URI = ('http://games.espn.com/tournament-challenge-bracket/'
             '2017/en/entry?entryID=')
-BRACKETS_DIR = 'brackets_html'
+BRACKETS_DIR = os.path.join(
+    local_settings.YEAR, 'brackets_html')
 
 
 def get_bracket_ids():
-    with open('bracket_links.json', 'r') as fh:
+    with open(utils.BRACKET_LINKS_FILE, 'r') as fh:
         bracket_dict = json.load(fh)
     return bracket_dict.values()
 
