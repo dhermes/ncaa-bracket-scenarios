@@ -15,6 +15,8 @@ REDUCED_SCENARIOS = os.path.join(
     local_settings.YEAR, 'reduced_completed_scenarios.json')
 REDUCED_FILLED_OUT = os.path.join(
     local_settings.YEAR, 'reduced_all_filled_out.json')
+WINNING_SCORES = os.path.join(
+    local_settings.YEAR, 'winning_scores.json')
 
 
 def prepare_directory(dirname):

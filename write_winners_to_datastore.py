@@ -8,7 +8,7 @@ import local_settings
 import utils
 
 
-with open('winning_scores.json', 'r') as fh:
+with open(utils.WINNING_SCORES, 'r') as fh:
     ALL_OUTCOMES = json.load(fh)
 with open(utils.BRACKET_LINKS_FILE, 'r') as fh:
     BRACKETS = json.load(fh)

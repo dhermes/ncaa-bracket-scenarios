@@ -109,7 +109,7 @@ def main():
             msg = 'Count: {}'.format(count)
             print(msg)
 
-    filename = 'winning_scores.json'
+    filename = utils.WINNING_SCORES
     with open(filename, 'w') as fh:
         json.dump(to_store, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
