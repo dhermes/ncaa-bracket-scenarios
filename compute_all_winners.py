@@ -6,6 +6,7 @@ import os
 from game_tree_classes import _BASE64_ALPHABET
 from game_tree_classes import Team
 import get_brackets_html
+import utils
 
 
 def get_brackets():
@@ -15,7 +16,7 @@ def get_brackets():
 
 
 def get_scenarios():
-    filename = 'reduced_completed_scenarios.json'
+    filename = utils.REDUCED_SCENARIOS
     with open(filename, 'r') as fh:
         return json.load(fh)
 

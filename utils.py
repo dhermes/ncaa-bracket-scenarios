@@ -11,6 +11,8 @@ BASE_BRACKET_PICKLE = os.path.join(
     local_settings.YEAR, 'base_bracket.pkl')
 SWEET16_PICKLE = os.path.join(
     local_settings.YEAR, 'complete_bracket_sweet_16.pkl')
+REDUCED_SCENARIOS = os.path.join(
+    local_settings.YEAR, 'reduced_completed_scenarios.json')
 
 
 def prepare_directory(dirname):

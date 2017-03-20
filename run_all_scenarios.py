@@ -5,9 +5,10 @@ import json
 import pickle
 
 from game_tree_classes import WinnerOf
+import utils
 
 
-with open('complete_bracket_first_half_of_elite_8.pkl', 'r') as fh:
+with open(utils.SWEET16_PICKLE, 'r') as fh:
     SLOTS_BEFORE = pickle.load(fh)
 
 
@@ -41,7 +42,7 @@ def main():
         reduced_vals.append(
             complete_bracket(SLOTS_BEFORE, choice_slots, choice_tuple))
 
-    filename = 'reduced_completed_scenarios.json'
+    filename = utils.REDUCED_SCENARIOS
     with open(filename, 'w') as fh:
         json.dump(reduced_vals, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))
