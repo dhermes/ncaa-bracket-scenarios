@@ -13,7 +13,7 @@ with open(utils.WINNING_SCORES, 'r') as fh:
 with open(utils.BRACKET_LINKS_FILE, 'r') as fh:
     BRACKETS = json.load(fh)
 ENTRY_TO_NAME = {str(val): key for key, val in BRACKETS.items()}
-PAGE_SIZE = 100
+PAGE_SIZE = 500
 
 
 def to_entity(key, client, outcomes):
@@ -37,7 +37,7 @@ def to_entity(key, client, outcomes):
 def store_entities():
     client = datastore.Client(project=local_settings.DATASET_ID)
 
-    # Page 100 items at a time.
+    # Page ``PAGE_SIZE`` items at a time.
     base_index = 0
 
     # Use sorted so it is deterministic.
