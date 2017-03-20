@@ -42,7 +42,7 @@ def main():
         bracket_reduced = get_complete_bracket(slot_winners, BASE_BRACKET)
         to_store[entry_id] = bracket_reduced
 
-    filename = 'reduced_all_filled_out.json'
+    filename = utils.REDUCED_FILLED_OUT
     with open(filename, 'w') as fh:
         json.dump(to_store, fh, indent=2, sort_keys=True,
                   separators=(',', ': '))

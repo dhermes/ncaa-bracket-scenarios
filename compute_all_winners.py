@@ -10,7 +10,7 @@ import utils
 
 
 def get_brackets():
-    filename = 'reduced_all_filled_out.json'
+    filename = utils.REDUCED_FILLED_OUT
     with open(filename, 'r') as fh:
         return json.load(fh)
 
