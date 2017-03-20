@@ -4,11 +4,7 @@ import pickle
 from game_tree_classes import GameSlots
 from game_tree_classes import Team
 from game_tree_classes import WinnerOf
-import local_settings
-
-
-BASE_FILENAME = os.path.join(
-    local_settings.YEAR, 'base_bracket.pkl')
+import utils
 
 
 def main():
@@ -28,7 +24,7 @@ def main():
             winner_of = WinnerOf(prev_slot1, prev_slot2)
             game_slots.add_slot(slot_id, winner_of)
         prev_first, first_index = first_index, first_index + round_size
-    game_slots.save(BASE_FILENAME)
+    game_slots.save(utils.BASE_BRACKET_PICKLE)
 
 
 if __name__ == '__main__':

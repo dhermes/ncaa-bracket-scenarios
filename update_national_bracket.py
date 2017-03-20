@@ -1,6 +1,7 @@
 import json
 import pickle
 
+import local_settings
 import utils
 
 
@@ -25,7 +26,7 @@ def choose_winner(winner_of, game_slots):
 
 
 def main():
-    with open('base_bracket.pkl', 'r') as fh:
+    with open(utils.BASE_BRACKET_PICKLE, 'r') as fh:
         slots_before = pickle.load(fh)
 
     game_slots = slots_before.copy()
@@ -33,7 +34,7 @@ def main():
         winner_of = game_slots.get_slot(slot_id)
         winning_team = choose_winner(winner_of, game_slots)
         game_slots.reset_slot(slot_id, winning_team)
-    game_slots.save('complete_bracket_sweet_16.pkl')
+    game_slots.save(utils.SWEET16_PICKLE)
 
 
 if __name__ == '__main__':

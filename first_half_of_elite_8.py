@@ -28,7 +28,7 @@ def choose_winner(winner_of, game_slots):
 
 
 def main():
-    with open('complete_bracket_sweet_16.pkl', 'r') as fh:
+    with open(utils.SWEET16_PICKLE, 'r') as fh:
         slots_before = pickle.load(fh)
 
     game_slots = slots_before.copy()

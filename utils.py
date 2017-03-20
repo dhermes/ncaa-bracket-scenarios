@@ -7,6 +7,10 @@ BRACKET_LINKS_FILE = os.path.join(
     local_settings.YEAR, 'bracket_links.json')
 TEAM_MAP_FILENAME = os.path.join(
     local_settings.YEAR, 'team_map.json')
+BASE_BRACKET_PICKLE = os.path.join(
+    local_settings.YEAR, 'base_bracket.pkl')
+SWEET16_PICKLE = os.path.join(
+    local_settings.YEAR, 'complete_bracket_sweet_16.pkl')
 
 
 def prepare_directory(dirname):

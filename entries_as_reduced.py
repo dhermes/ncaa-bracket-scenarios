@@ -6,9 +6,10 @@ import pickle
 
 from game_tree_classes import Team
 import get_brackets_html
+import utils
 
 
-with open('base_bracket.pkl', 'r') as fh:
+with open(utils.BASE_BRACKET_PICKLE, 'r') as fh:
     BASE_BRACKET = pickle.load(fh)
 
 
